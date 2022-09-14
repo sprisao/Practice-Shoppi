@@ -4,6 +4,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
 		>
 	
 	<com.google.android.material.appbar.AppBarLayout
@@ -15,27 +16,34 @@
 		<androidx.appcompat.widget.Toolbar
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				app:contentInsetStart="0dp"
 				app:layout_scrollFlags="scroll|enterAlways"
 				>
 			
 			<TextView
 					android:id="@+id/tv_home_title"
+					style="@style/TextHeadLine5.Black02.Bold"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginTop="32dp"
-					android:text="DummyText"
+					tools:text="Home"
+					android:paddingStart="16dp"
+					android:paddingTop="32dp"
+					android:paddingEnd="16dp"
+					android:paddingBottom="24dp"
+					android:layout_marginEnd="72dp"
+					android:maxLines="2"
 					android:textColor="@color/shoppi_black_02"
 					android:textSize="24sp"
+					android:textStyle="bold"
 					/>
-			<!-- ImageView -->
+			
 			<ImageView
 					android:id="@+id/iv_home_icon"
+					android:scaleType="center"
 					android:layout_width="68dp"
 					android:layout_height="68dp"
-					android:layout_marginTop="31dp"
+					android:layout_gravity="right"
 					android:layout_marginEnd="4dp"
-					android:src="@drawable/img_logo_home"
 					/>
 		
 		</androidx.appcompat.widget.Toolbar>
