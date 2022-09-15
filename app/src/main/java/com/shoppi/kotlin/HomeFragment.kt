@@ -5,12 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
@@ -26,23 +26,27 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val iconImage = view.findViewById<ImageView>(R.id.iv_home_icon)
-        val titleText = view.findViewById<TextView>(R.id.tv_home_title)
+        val toolbarIcon = view.findViewById<ImageView>(R.id.iv_home_icon)
+        val toolbarTitle = view.findViewById<TextView>(R.id.tv_home_title)
+        val viewpager = view.findViewById<ViewPager2>(R.id.vp_home_banner)
+
 
         val assetLoader = AssetLoader()
-        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
-        Log.d("homeData", homeData ?: "")
+        val homeJsonString =
+            assetLoader.getJsonString(requireContext(), "home.json")
+        Log.d("homeData", homeJsonString ?: "")
 
-        if (homeData != null) {
-            val jsonObject = JSONObject(homeData)
-            val title = jsonObject.getJSONObject("title")
-            val text = title.getString("text")
-            val iconUrl = title.getString("icon_url")
-            val titleValue = Title(text, iconUrl)
-            titleValue.text
+        if (homeJsonString != null) {
+            val gson = Gson()
+            val homeData = gson.fromJson(homeJsonString, HomeData::class.java)
 
-            Glide.with(this).load(titleValue.iconUrl).into(iconImage)
-            titleText.text = titleValue.text
+            toolbarTitle.text = homeData.title.text
+
+            Glide.with(this).load(homeData.title.iconUrl).into(toolbarIcon)
+
+            viewpager.adapter = HomeBannerAdapter().apply {
+                submitList(homeData.topBanners)
+            }
         }
 
     }
