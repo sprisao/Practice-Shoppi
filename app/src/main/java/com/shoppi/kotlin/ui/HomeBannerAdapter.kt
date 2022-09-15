@@ -1,4 +1,4 @@
-package com.shoppi.kotlin
+package com.shoppi.kotlin.ui
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shoppi.kotlin.Banner
+import com.shoppi.kotlin.R
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
