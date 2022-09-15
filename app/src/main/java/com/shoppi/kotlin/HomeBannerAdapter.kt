@@ -1,5 +1,7 @@
 package com.shoppi.kotlin
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +11,20 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import java.text.DecimalFormat
+import kotlin.math.roundToInt
 
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()) {
+class HomeBannerAdapter :
+    ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+        BannerDiffCallback()
+    ) {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_banner, parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup, viewType: Int
+    ): HomeBannerViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_home_banner, parent, false)
         return HomeBannerViewHolder(view)
     }
 
@@ -23,26 +33,63 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
     }
 
     class HomeBannerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val bannerImageView = view.findViewById<ImageView>(R.id.iv_banner_image)
-        private val bannerBadgeTextView = view.findViewById<TextView>(R.id.tv_banner_badge)
-        private val bannerTitleTextView = view.findViewById<TextView>(R.id.tv_banner_title)
+        private val bannerImageView =
+            view.findViewById<ImageView>(R.id.iv_banner_image)
+        private val bannerBadgeTextView =
+            view.findViewById<TextView>(R.id.tv_banner_badge)
+        private val bannerTitleTextView =
+            view.findViewById<TextView>(R.id.tv_banner_title)
 
-        private val bannerDetailThumbnailImageView = view.findViewById<ImageView>(R.id.iv_banner_detail_thumbnail)
-        private val bannerDetailBrandNameTextView = view.findViewById<TextView>(R.id.tv_product_brand_name)
+        private val bannerDetailThumbnailImageView =
+            view.findViewById<ImageView>(R.id.iv_banner_detail_thumbnail)
+        private val bannerDetailBrandNameTextView =
+            view.findViewById<TextView>(R.id.tv_product_brand_name)
 
-        /*make value from item_home_banner.xml*/
-
-        private val bannerDetailBrandLabelTextView = view.findViewById<TextView>(R.id.tv_banner_detail_brand_lable)
-        private val bannerDetailProductLabelTextView = view.findViewById<TextView>(R.id.tv_banner_detail_product_label)
+        private val bannerDetailBrandLabelTextView =
+            view.findViewById<TextView>(R.id.tv_banner_detail_brand_lable)
+        private val bannerDetailProductLabelTextView =
+            view.findViewById<TextView>(R.id.tv_banner_detail_product_label)
         private val bannerDetailDiscountRateTextView =
             view.findViewById<TextView>(R.id.tv_banner_detail_product_label_discount_rate)
         private val bannerDetailDiscountPriceTextView =
             view.findViewById<TextView>(R.id.tv_banner_detail_product_label_discount_price)
-        private val bannerDetailPriceTextView = view.findViewById<TextView>(R.id.tv_banner_detail_product_price)
+        private val bannerDetailPriceTextView =
+            view.findViewById<TextView>(R.id.tv_banner_detail_product_price)
 
         fun bind(banner: Banner) {
-            Glide.with(itemView.context).load(banner.backgroundImageUrl).into(bannerImageView)
+            loadImage(banner.backgroundImageUrl, bannerImageView)
+            bannerBadgeTextView.text = banner.badge.label
+            bannerBadgeTextView.background =
+                ColorDrawable(Color.parseColor(banner.badge.backgroundColor))
+            bannerTitleTextView.text = banner.label
+            loadImage(
+                banner.productDetail.thumbnailImageUrl,
+                bannerDetailThumbnailImageView
+            )
+            bannerDetailBrandLabelTextView.text = banner.productDetail.brandName
+            bannerDetailProductLabelTextView.text = banner.productDetail.label
+            bannerDetailDiscountRateTextView.text =
+                "${banner.productDetail.discountRate}%"
+            calculateDiscountAmount(bannerDetailDiscountPriceTextView, banner.productDetail.discountRate, banner.productDetail.price)
+            applyPriceFormat(bannerDetailPriceTextView, banner.productDetail.price)
+        }
 
+        private fun calculateDiscountAmount(
+            view: TextView, discountRate: Int, price: Int
+        ) {
+            val discounPrice =
+                (((100 - discountRate) / 100.0) * price).roundToInt()
+
+            applyPriceFormat(view, discounPrice)
+        }
+
+        private fun applyPriceFormat(view: TextView, price: Int) {
+            val decimalFormat = DecimalFormat("#,###")
+            view.text = decimalFormat.format(price) + "원"
+        }
+
+        private fun loadImage(urlString: String, imageView: ImageView) {
+            Glide.with(itemView).load(urlString).into(imageView)
         }
     }
 }
