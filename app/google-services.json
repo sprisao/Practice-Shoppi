@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588332057371",
+    "project_id": "shoppi-kotlin-app",
+    "storage_bucket": "shoppi-kotlin-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588332057371:android:a0d5b6861ac8ef575889be",
+        "android_client_info": {
+          "package_name": "com.shoppi.kotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588332057371-e01fbt9sdrqtuof35bm5mlfjca055lp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6WqUNuVRGF4VpZifuT5vQSnIY1c63mMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588332057371-e01fbt9sdrqtuof35bm5mlfjca055lp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
