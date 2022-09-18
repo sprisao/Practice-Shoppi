@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.shoppi.kotlin.AssetLoader
 import com.shoppi.kotlin.network.ApiClient
-import com.shoppi.kotlin.repository.CategoryRemoteDataSource
-import com.shoppi.kotlin.repository.CategoryRepository
-import com.shoppi.kotlin.repository.HomeAssetDataSource
-import com.shoppi.kotlin.repository.HomeRepository
+import com.shoppi.kotlin.repository.category.CategoryRemoteDataSource
+import com.shoppi.kotlin.repository.category.CategoryRepository
+import com.shoppi.kotlin.repository.home.HomeAssetDataSource
+import com.shoppi.kotlin.repository.home.HomeRepository
 import com.shoppi.kotlin.ui.category.CategoryViewModel
 import com.shoppi.kotlin.ui.home.HomeViewModel
 import java.lang.IllegalArgumentException

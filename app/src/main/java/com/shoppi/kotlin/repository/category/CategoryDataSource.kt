@@ -1,4 +1,4 @@
-package com.shoppi.kotlin.repository
+package com.shoppi.kotlin.repository.category
 
 import com.shoppi.kotlin.model.Category
 

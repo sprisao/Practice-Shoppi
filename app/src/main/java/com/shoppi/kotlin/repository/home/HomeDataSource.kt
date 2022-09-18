@@ -1,4 +1,4 @@
-package com.shoppi.kotlin.repository
+package com.shoppi.kotlin.repository.home
 
 import com.shoppi.kotlin.model.HomeData
 
