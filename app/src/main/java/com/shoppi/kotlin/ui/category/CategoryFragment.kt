@@ -8,9 +8,14 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.shoppi.kotlin.R
+import com.shoppi.kotlin.common.KEY_CATEGORY_ID
+import com.shoppi.kotlin.common.KEY_CATEGORY_LABEL
 import com.shoppi.kotlin.databinding.FragmentCategoryBinding
+import com.shoppi.kotlin.model.Category
+import com.shoppi.kotlin.ui.common.EventObserver
 import com.shoppi.kotlin.ui.common.ViewModelFactory
 
 class CategoryFragment : Fragment() {
@@ -28,8 +33,7 @@ class CategoryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
-            FragmentCategoryBinding.inflate(inflater, container, false)
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,15 +46,17 @@ class CategoryFragment : Fragment() {
             categoryAdapter.submitList(it)
         }
 
-        viewModel.openCategoryEvent.observe(viewLifecycleOwner) {
-            openCategoryDetail(it.categoryId,it.label)
-        }
+        viewModel.openCategoryEvent.observe(viewLifecycleOwner, EventObserver {
+            openCategoryDetail(it.categoryId, it.label)
+        })
+
     }
 
     private fun openCategoryDetail(categoryId: String, categoryLabel: String) {
-        findNavController().navigate(R.id.action_category_to_category_detail, bundleOf(
-            "category_id" to categoryId,
-            "category_label" to categoryLabel
-        ))
+        findNavController().navigate(
+            R.id.action_category_to_category_detail, bundleOf(
+                KEY_CATEGORY_ID to categoryId, KEY_CATEGORY_LABEL to categoryLabel
+            )
+        )
     }
 }
