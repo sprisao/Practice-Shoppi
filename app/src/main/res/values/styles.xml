@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!-- ImageView Style    -->
-	
 	<style name="Circle">
 		<item name="cornerSize">50%</item>
 	</style>
 	
+	
 	<!-- 	Text Style   -->
 	<style name="TextHeadLine5.Black02"
-		parent="TextAppearance.MaterialComponents.Headline5">
+	       parent="TextAppearance.MaterialComponents.Headline5">
 		<item name="android:textColor">@color/shoppi_black_02</item>
 	</style>
+	
 	<style name="TextHeadLine5.Black02.Bold">
 		<item name="android:textStyle">bold</item>
 	</style>
+	
 	<style name="TextMedium"
-		parent="TextAppearance.AppCompat.Medium">
+	       parent="TextAppearance.AppCompat.Medium">
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
 	
@@ -29,8 +31,13 @@
 	</style>
 	
 	<style name="TextSubtitle1"
-		parent="TextAppearance.MaterialComponents.Subtitle1">
+	       parent="TextAppearance.MaterialComponents.Subtitle1">
 		<item name="android:textColor">@color/shoppi_black_01</item>
+	</style>
+	
+	<style name="TextSubtitle1.bold"
+	       parent="TextAppearance.MaterialComponents.Subtitle1">
+		<item name="android:textStyle">bold</item>
 	</style>
 	
 	<style name="TextSubtitle1.White">
@@ -43,7 +50,7 @@
 	</style>
 	
 	<style name="TextSubtitle2"
-		parent="TextAppearance.MaterialComponents.Subtitle2">
+	       parent="TextAppearance.MaterialComponents.Subtitle2">
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
 	
@@ -53,6 +60,15 @@
 	
 	<style name="TextSubtitle2.Black02.Bold">
 		<item name="android:textColor">@color/shoppi_black_02</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	
+	<style name="TextSubtitle2.purple">
+		<item name="android:textColor">@color/shoppi_purple</item>
+	</style>
+	
+	<style name="TextSubtitle2.purple.Bold">
+		<item name="android:textColor">@color/shoppi_purple</item>
 		<item name="android:textStyle">bold</item>
 	</style>
 	
@@ -71,28 +87,33 @@
 	</style>
 	
 	<style name="TextCaption1"
-		parent="TextAppearance.AppCompat.Caption">
+	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
 	
 	<style name="TextCaption1.Grey03"
-		parent="TextAppearance.AppCompat.Caption">
+	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textColor">@color/shoppi_grey_03</item>
 	</style>
 	
+	<style name="TextCaption1.Grey05">
+		<item name="android:textColor">@color/shoppi_grey_05</item>
+	</style>
+	
 	<style name="TextCaption2"
-		parent="TextAppearance.AppCompat.Caption">
+	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textSize">11sp</item>
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
+	
 	<style name="TextCaption2.white"
-		parent="TextAppearance.AppCompat.Caption">
+	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textSize">11sp</item>
 		<item name="android:textColor">@color/shoppi_white</item>
 	</style>
-
+	
 	<style name="TextCaption2.white.bold"
-		parent="TextAppearance.AppCompat.Caption">
+	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textStyle">bold</item>
 	</style>
 </resources>
