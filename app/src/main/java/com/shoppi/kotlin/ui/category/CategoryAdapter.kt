@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.shoppi.kotlin.databinding.ItemCategoryBinding
 import com.shoppi.kotlin.model.Category
 
-class CategoryAdapter :
-        ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(
-            CategoryDiffCallback()
-        ) {
+class CategoryAdapter(private val viewModel: CategoryViewModel) :
+    ListAdapter<Category, CategoryAdapter.CategoryViewHolder>(
+        CategoryDiffCallback()
+    ) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int
@@ -28,9 +28,11 @@ class CategoryAdapter :
         holder.bind(getItem(position))
     }
 
-    class CategoryViewHolder(private val binding: ItemCategoryBinding) :
-            RecyclerView.ViewHolder(binding.root) {
+    inner  class CategoryViewHolder(
+        private val binding: ItemCategoryBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
+            binding.viewModel = viewModel
             binding.category = category
             binding.executePendingBindings()
         }

@@ -76,7 +76,7 @@
 				/>
 		
 		<ImageView
-				imageUrl="@{banner.productDetail.thumbnailImageUrl}"
+				imageUrl="@{banner.product.thumbnailImageUrl}"
 				android:id="@+id/iv_banner_detail_thumbnail"
 				android:layout_width="50dp"
 				android:layout_height="50dp"
@@ -89,7 +89,7 @@
 		
 		<TextView
 				android:id="@+id/tv_banner_detail_brand_lable"
-				android:text="@{banner.productDetail.brandName}"
+				android:text="@{banner.product.brandName}"
 				android:maxLines="1"
 				android:ellipsize="end"
 				android:layout_width="0dp"
@@ -105,7 +105,7 @@
 		
 		<TextView
 				android:id="@+id/tv_banner_detail_product_label"
-				android:text="@{banner.productDetail.label}"
+				android:text="@{banner.product.label}"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="1dp"
@@ -119,7 +119,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="7dp"
-				android:text="@{@string/unit_discount_rate(banner.productDetail.discountRate)}"
+				android:text="@{@string/unit_discount_rate(banner.product.discountRate)}"
 				app:layout_constraintStart_toStartOf="@+id/tv_banner_detail_product_label"
 				app:layout_constraintTop_toBottomOf="@id/tv_banner_detail_product_label"
 				tools:text="9%"
@@ -130,8 +130,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="6dp"
-				priceAmount="@{banner.productDetail.price}"
-				discountRate="@{banner.productDetail.discountRate}"
+				priceAmount="@{banner.product.price}"
+				discountRate="@{banner.product.discountRate}"
 				app:layout_constraintStart_toEndOf="@id/tv_banner_detail_product_label_discount_rate"
 				app:layout_constraintBottom_toBottomOf="@id/tv_banner_detail_product_label_discount_rate"
 				tools:text="89,000원"
@@ -141,7 +141,7 @@
 				android:id="@+id/tv_banner_detail_product_price"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				priceAmount="@{banner.productDetail.price}"
+				priceAmount="@{banner.product.price}"
 				android:layout_marginStart="4dp"
 				android:layout_marginBottom="1dp"
 				app:layout_constraintStart_toEndOf="@id/tv_banner_detail_product_label_discount_price"

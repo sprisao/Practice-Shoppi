@@ -1,7 +1,5 @@
 package com.shoppi.kotlin.ui.home
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,7 +47,7 @@ class HomeBannerAdapter :
 
 class BannerDiffCallback : DiffUtil.ItemCallback<Banner>() {
     override fun areItemsTheSame(oldItem: Banner, newItem: Banner): Boolean {
-        return oldItem.productDetail.productId == newItem.productDetail.productId
+        return oldItem.product.productId == newItem.product.productId
     }
 
     override fun areContentsTheSame(oldItem: Banner, newItem: Banner): Boolean {
