@@ -1,16 +1,21 @@
 package com.shoppi.kotlin.network
 
 import com.shoppi.kotlin.model.Category
+import com.shoppi.kotlin.model.CategoryDetail
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiClient {
 
     @GET("categories.json")
     suspend fun getCategories(): List<Category>
+
+    @GET("fashion_female.json")
+    suspend fun getCategoryDetail(): CategoryDetail
 
     companion object {
 
