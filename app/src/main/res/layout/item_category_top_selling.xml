@@ -49,6 +49,7 @@
 				app:layout_constraintTop_toTopOf="@id/iv_category_top_selling_img"
 				app:layout_constraintEnd_toEndOf="@id/iv_category_top_selling_img"
 				tools:text="N"
+				android:text="N"
 				/>
 		
 		<TextView
