@@ -115,8 +115,7 @@
 		<item name="android:textColor">@color/shoppi_white</item>
 	</style>
 	
-	<style name="TextCaption2.white.bold"
-	       parent="TextAppearance.AppCompat.Caption">
+	<style name="TextCaption2.white.bold">
 		<item name="android:textStyle">bold</item>
 	</style>
 </resources>

@@ -10,3 +10,11 @@ fun loadImage(view: ImageView, url: String?) {
         Glide.with(view.context).load(url).into(view)
     }
 }
+
+@BindingAdapter(/*ImageUrl 불러오기*/"circleImage")
+fun loadCircleImage(view: ImageView, url: String?) {
+    if (url != null) {
+        Glide.with(view.context).load(url).circleCrop().into(view)
+    }
+}
+
