@@ -15,7 +15,7 @@ import com.shoppi.kotlin.databinding.ItemHomeBannerBinding
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
-class HomeBannerAdapter :
+class HomeBannerAdapter(private val viewModel: HomeViewModel) :
     ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
         BannerDiffCallback()
     ) {
@@ -35,11 +35,12 @@ class HomeBannerAdapter :
         holder.bind(getItem(position))
     }
 
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
+   inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(banner: Banner) {
             binding.banner = banner
+            binding.viewModel = viewModel
             binding.executePendingBindings()
         }
     }

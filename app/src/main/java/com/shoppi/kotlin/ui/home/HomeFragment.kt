@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.kotlin.R
+import com.shoppi.kotlin.common.KEY_PRODUCT_ID
 import com.shoppi.kotlin.databinding.FragmentHomeBinding
+import com.shoppi.kotlin.ui.common.EventObserver
 import com.shoppi.kotlin.ui.common.ViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -45,7 +45,23 @@ class HomeFragment : Fragment() {
         /* 'viewpager'가 반복되므로 'with'함수를 통해 반복을 없앤다*/
         setTopBanners()
 
+        setNavigation()
+
     }
+
+    private fun setNavigation() {
+        viewModel.openProductDetailEvent.observe(
+            viewLifecycleOwner,
+            EventObserver { productId ->
+                findNavController().navigate(
+                    R.id.action_home_to_product_detail,
+                    bundleOf(
+                        KEY_PRODUCT_ID to productId
+                    )
+                )
+            })
+    }
+
 
     private fun setToolbar() {
         viewModel.title.observe(
@@ -57,13 +73,14 @@ class HomeFragment : Fragment() {
 
     private fun setTopBanners() {
         with(binding.vpHomeBanner) {
-            adapter = HomeBannerAdapter().apply {
+            adapter = HomeBannerAdapter(viewModel).apply {
                 viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
                     submitList(banners)
                 }
             }
 
-            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+            val pageWidth =
+                resources.getDimension(R.dimen.viewpager_item_width)
             val pageMargin =
                 resources.getDimension(R.dimen.viewpager_item_margin)
 

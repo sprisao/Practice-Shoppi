@@ -25,11 +25,11 @@
         <entry key="app/src/main/res/layout/fragment_category_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.26337033299697277" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/layout/item_category.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_category.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_category_promotion.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_category_top_selling.xml" value="0.8301587301587302" />
         <entry key="app/src/main/res/layout/item_category_top_selling_section.xml" value="0.45254074784276127" />
-        <entry key="app/src/main/res/layout/item_home_banner.xml" value="0.2977667493796526" />
+        <entry key="app/src/main/res/layout/item_home_banner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_test.xml" value="0.54375" />
         <entry key="app/src/main/res/layout/item_title.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/menu/navigation_main_menu.xml" value="0.46944444444444444" />
