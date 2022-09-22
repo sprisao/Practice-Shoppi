@@ -41,10 +41,6 @@ class ViewModelFactory(private val context: Context) :
             )
             ProductDetailViewModel(repository) as T
         } else {
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-
-        else {
             throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
         }
     }
