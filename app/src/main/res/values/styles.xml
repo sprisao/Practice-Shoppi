@@ -34,6 +34,7 @@
 	<style name="TextMedium.bold">
 		<item name="android:textStyle">bold</item>
 	</style>
+	
 	<style name="TextMedium.Purple">
 		<item name="android:textColor">@color/shoppi_purple</item>
 	</style>
@@ -97,6 +98,7 @@
 	<style name="TextSubtitle3.Bold">
 		<item name="android:textStyle">bold</item>
 	</style>
+	
 	<style name="TextSubtitle3.Grey03">
 		<item name="android:textSize">13sp</item>
 		<item name="android:textColor">@color/shoppi_grey_03</item>
@@ -110,7 +112,7 @@
 	<style name="TextCaption1.White">
 		<item name="android:textColor">@color/shoppi_white</item>
 	</style>
-
+	
 	<style name="TextCaption1.Grey03"
 	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textColor">@color/shoppi_grey_03</item>
@@ -126,6 +128,10 @@
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
 	
+	<style name="TextCaption2.Grey04">
+		<item name="android:textColor">@color/shoppi_grey_04</item>
+	</style>
+	
 	<style name="TextCaption2.white"
 	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textSize">11sp</item>
@@ -135,4 +141,4 @@
 	<style name="TextCaption2.white.bold">
 		<item name="android:textStyle">bold</item>
 	</style>
-	</resources>
+</resources>

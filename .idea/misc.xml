@@ -10,7 +10,9 @@
         <entry key="app/src/main/res/drawable/background_shadow_gradient.xml" value="0.316" />
         <entry key="app/src/main/res/drawable/background_splash_screen.xml" value="0.252" />
         <entry key="app/src/main/res/drawable/background_white.xml" value="0.5415" />
+        <entry key="app/src/main/res/drawable/button_product_detail_nav.xml" value="0.269" />
         <entry key="app/src/main/res/drawable/ic_gnb_back.xml" value="0.252" />
+        <entry key="app/src/main/res/drawable/product_detail_nav.xml" value="0.269" />
         <entry key="app/src/main/res/drawable/selected_viewpager_indicator.xml" value="0.5415" />
         <entry key="app/src/main/res/drawable/selector_cart_icon.xml" value="0.252" />
         <entry key="app/src/main/res/drawable/selector_category_icon.xml" value="0.252" />
