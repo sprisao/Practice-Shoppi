@@ -36,7 +36,7 @@
 			/>
 	<fragment
 			android:id="@+id/navigation_product_detail"
-			android:name="com.shoppi.kotlin.ui.ProductDetailFragment"
+			android:name="com.shoppi.kotlin.ui.productdetail.ProductDetailFragment"
 			android:label="ProductDetailFragment"
 			tools:layout="@layout/fragment_product_detail"
 			/>

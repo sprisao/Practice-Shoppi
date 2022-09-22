@@ -1,4 +1,4 @@
-package com.shoppi.kotlin.ui
+package com.shoppi.kotlin.ui.productdetail
 
 import android.os.Bundle
 import android.util.Log
@@ -6,10 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.shoppi.kotlin.R
 import com.shoppi.kotlin.common.KEY_PRODUCT_ID
+import com.shoppi.kotlin.ui.common.ViewModelFactory
 
 class ProductDetailFragment : Fragment() {
+
+    private val viewModel: ProductDetailViewModel by viewModels {
+        ViewModelFactory(
+            requireContext()
+        )
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

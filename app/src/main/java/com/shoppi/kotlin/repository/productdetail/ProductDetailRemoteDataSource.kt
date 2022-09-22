@@ -1,4 +1,4 @@
-package com.shoppi.kotlin.repository.product
+package com.shoppi.kotlin.repository.productdetail
 
 import com.shoppi.kotlin.model.Product
 import com.shoppi.kotlin.network.ApiClient
