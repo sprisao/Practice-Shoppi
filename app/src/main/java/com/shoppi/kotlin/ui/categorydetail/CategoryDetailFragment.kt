@@ -34,7 +34,7 @@ class CategoryDetailFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         setToolbar()
-        setListAdater()
+        setListAdapter()
     }
 
     private fun setToolbar() {
@@ -42,7 +42,7 @@ class CategoryDetailFragment : Fragment() {
         binding.toolbarCategoryDetail.title = categoryLabel
     }
 
-    private fun setListAdater() {
+    private fun setListAdapter() {
         val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
         val titleAdapter = CategorySectionTitleAdapter()
         val promotionAdapter = CategoryPromotionAdapter()
