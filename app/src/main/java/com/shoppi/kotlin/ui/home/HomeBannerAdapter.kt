@@ -1,19 +1,12 @@
 package com.shoppi.kotlin.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.shoppi.kotlin.model.Banner
-import com.shoppi.kotlin.R
 import com.shoppi.kotlin.databinding.ItemHomeBannerBinding
-import java.text.DecimalFormat
-import kotlin.math.roundToInt
+import com.shoppi.kotlin.model.Banner
 
 class HomeBannerAdapter(private val viewModel: HomeViewModel) :
     ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(

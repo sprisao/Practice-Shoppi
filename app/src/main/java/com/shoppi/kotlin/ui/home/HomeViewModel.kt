@@ -31,9 +31,9 @@ class HomeViewModel(private val homeRepository: HomeRepository) :
 
     private fun loadHomeData() {
         val homeData = homeRepository.getHomeData()
-        homeData?.let { homeData ->
-            _title.value = homeData.title
-            _topBanners.value = homeData.topBanners
+        homeData?.let { received_homeData ->
+            _title.value = received_homeData.title
+            _topBanners.value = received_homeData.topBanners
         }
     }
 }
