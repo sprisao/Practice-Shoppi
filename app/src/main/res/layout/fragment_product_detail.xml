@@ -107,7 +107,7 @@
 							app:layout_constraintStart_toStartOf="parent"
 							android:layout_marginStart="16dp"
 							android:textSize="18sp"
-							discountRate="@{product.discountRate}"
+							android:text="@{@string/unit_discount_rate(product.discountRate)}"
 							tools:text="10%"
 							android:layout_marginTop="20dp"
 							/>
@@ -162,19 +162,20 @@
 							android:layout_marginTop="24dp"
 							/>
 					
-					<ImageView
-							android:id="@+id/iv_product_detail_image"
+					<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/rv_product_detail"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							app:layout_constraintTop_toBottomOf="@id/tv_product_detail_image_title"
-							app:layout_constraintStart_toStartOf="parent"
-							app:layout_constraintEnd_toEndOf="parent"
-							android:src="@drawable/img_pdp_top_01"
-							android:scaleType="centerCrop"
-							app:layout_constraintBottom_toBottomOf="parent"
-							android:layout_marginBottom="50dp"
 							android:layout_marginTop="24dp"
-							android:contentDescription="@string/description_product_detail_image"
+							android:layout_marginBottom="24dp"
+							android:nestedScrollingEnabled="false"
+							android:orientation="vertical"
+							app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+							app:layout_constraintBottom_toBottomOf="parent"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/tv_product_detail_image_title"
+							tools:listitem="@layout/item_product_description"
 							/>
 				
 				</androidx.constraintlayout.widget.ConstraintLayout>
