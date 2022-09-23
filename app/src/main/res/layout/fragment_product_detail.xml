@@ -6,6 +6,10 @@
 		>
 	
 	<data>
+		<variable
+				name="viewModel"
+				type="com.shoppi.kotlin.ui.productdetail.ProductDetailViewModel"
+				/>
 		
 		<variable
 				name="product"
@@ -55,7 +59,7 @@
 					<com.google.android.material.imageview.ShapeableImageView
 							android:id="@+id/iv_product_thumbnail"
 							app:shapeAppearance="@style/CornerSize12dp"
-							android:src="@{product.thumbnailImageUrl}"
+							imageUrl="@{product.thumbnailImageUrl}"
 							tools:src="@drawable/img_pdp_top_01"
 							android:layout_width="0dp"
 							android:layout_height="0dp"

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.shoppi.kotlin.R
 import com.shoppi.kotlin.common.KEY_PRODUCT_ID
 import com.shoppi.kotlin.databinding.FragmentProductDetailBinding
 import com.shoppi.kotlin.ui.common.ViewModelFactory
@@ -35,12 +34,23 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.productDetail.observe(viewLifecycleOwner) { productDetail ->
-            Log.e("Data", binding.product.toString())
-            binding.product = productDetail
-        }
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
-        val productId = requireArguments().getString(KEY_PRODUCT_ID)
-        Log.d("ProductDetailFragment", "productID=$productId")
+        requireArguments().getString(KEY_PRODUCT_ID)?.let { productId ->
+            setLayout(productId)
+        }
+    }
+
+    private fun setLayout(
+        productId: String,
+    ) {
+        viewModel.loadProductDetail(productId)
+        val descriptionAdapter = ProductDescriptionAdapter()
+        binding.rvProductDetail.adapter = descriptionAdapter
+        viewModel.productDetail.observe(viewLifecycleOwner) { product ->
+            binding.product = product
+            descriptionAdapter.submitList(product.descriptions)
+        }
     }
 }

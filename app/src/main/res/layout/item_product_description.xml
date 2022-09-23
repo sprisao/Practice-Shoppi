@@ -14,7 +14,7 @@
 	
 	<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			>
 		
 		<ImageView
@@ -25,7 +25,7 @@
 				android:contentDescription="상품 상세 이미지"
 				android:scaleType="centerCrop"
 				imageUrl="@{imageUrl}"
-				app:layout_constraintttom_toBottomOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toTopOf="parent"

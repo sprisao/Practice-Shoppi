@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiClient {
 
@@ -17,8 +18,8 @@ interface ApiClient {
     @GET("fashion_female.json")
     suspend fun getCategoryDetail(): CategoryDetail
 
-    @GET("products.json")
-    suspend fun getProductDetail(): Product
+    @GET("products/{productId}.json")
+    suspend fun getProductDetail(@Path("productId") productId: String): Product
 
     companion object {
 

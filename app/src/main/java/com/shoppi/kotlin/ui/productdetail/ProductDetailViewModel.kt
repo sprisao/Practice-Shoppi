@@ -10,16 +10,14 @@ import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(private val productDetailRepository: ProductDetailRepository) :
     ViewModel() {
+
     private val _productDetail = MutableLiveData<Product>()
     val productDetail: LiveData<Product> = _productDetail
 
-    init {
-        loadProductDetail()
-    }
 
-    private fun loadProductDetail() {
+     fun loadProductDetail(productId: String) {
         viewModelScope.launch {
-            val productDetail = productDetailRepository.getProductDetail()
+            val productDetail = productDetailRepository.getProductDetail(productId)
             _productDetail.value = productDetail
         }
     }
