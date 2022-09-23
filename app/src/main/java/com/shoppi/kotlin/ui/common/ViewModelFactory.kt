@@ -27,7 +27,11 @@ class ViewModelFactory(private val context: Context) :
         return if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
             val repository =
                 HomeRepository(HomeAssetDataSource(AssetLoader(context)))
-            HomeViewModel(repository) as T
+
+            val repository2 = CategoryDetailRepository(
+                CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient())
+            )
+            HomeViewModel(repository, repository2) as T
         } else if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
             val repository =
                 CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))

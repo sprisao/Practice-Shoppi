@@ -94,7 +94,19 @@
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintEnd_toEndOf="parent"
 						/>
+				
+				<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/rv_home_recommendations"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						android:orientation="vertical"
+						app:layout_constraintTop_toBottomOf="@+id/vp_home_banner_indicator"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						/>
 			</androidx.constraintlayout.widget.ConstraintLayout>
+		
 		</androidx.core.widget.NestedScrollView>
 	
 	</androidx.coordinatorlayout.widget.CoordinatorLayout>

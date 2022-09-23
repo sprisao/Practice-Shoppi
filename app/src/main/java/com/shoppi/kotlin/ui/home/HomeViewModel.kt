@@ -3,13 +3,19 @@ package com.shoppi.kotlin.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.shoppi.kotlin.model.Banner
+import com.shoppi.kotlin.model.Promotion
 import com.shoppi.kotlin.model.Title
+import com.shoppi.kotlin.repository.categorydetail.CategoryDetailRepository
 import com.shoppi.kotlin.repository.home.HomeRepository
 import com.shoppi.kotlin.ui.common.Event
+import kotlinx.coroutines.launch
 
-class HomeViewModel(private val homeRepository: HomeRepository) :
-        ViewModel() {
+class HomeViewModel(
+    private val homeRepository: HomeRepository,
+    private val categoryDetailRepository: CategoryDetailRepository
+) : ViewModel() {
 
     private val _title = MutableLiveData<Title>()
     val title: LiveData<Title> = _title
@@ -21,8 +27,19 @@ class HomeViewModel(private val homeRepository: HomeRepository) :
     val openProductDetailEvent: LiveData<Event<String>> =
         _openProductDetailEvent
 
+    private val _promotions = MutableLiveData<Promotion>()
+    val promotions = _promotions
+
     init {
         loadHomeData()
+        loadCategoryDetail()
+    }
+
+    private fun loadCategoryDetail() {
+        viewModelScope.launch {
+            val categoryDetail = categoryDetailRepository.getCategoryDetail()
+            _promotions.value = categoryDetail.promotions
+        }
     }
 
     fun openProductDetail(productId: String) {

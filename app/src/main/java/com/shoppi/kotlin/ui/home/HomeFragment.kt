@@ -8,10 +8,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.kotlin.R
 import com.shoppi.kotlin.common.KEY_PRODUCT_ID
 import com.shoppi.kotlin.databinding.FragmentHomeBinding
+import com.shoppi.kotlin.ui.categorydetail.CategoryPromotionAdapter
+import com.shoppi.kotlin.ui.categorydetail.CategorySectionTitleAdapter
 import com.shoppi.kotlin.ui.common.EventObserver
 import com.shoppi.kotlin.ui.common.ViewModelFactory
 
@@ -44,18 +47,17 @@ class HomeFragment : Fragment() {
 
         /* 'viewpager'가 반복되므로 'with'함수를 통해 반복을 없앤다*/
         setTopBanners()
+        setListAdapter()
 
         setNavigation()
 
     }
 
     private fun setNavigation() {
-        viewModel.openProductDetailEvent.observe(
-            viewLifecycleOwner,
+        viewModel.openProductDetailEvent.observe(viewLifecycleOwner,
             EventObserver { productId ->
                 findNavController().navigate(
-                    R.id.action_home_to_product_detail,
-                    bundleOf(
+                    R.id.action_home_to_product_detail, bundleOf(
                         KEY_PRODUCT_ID to productId
                     )
                 )
@@ -79,8 +81,7 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            val pageWidth =
-                resources.getDimension(R.dimen.viewpager_item_width)
+            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
             val pageMargin =
                 resources.getDimension(R.dimen.viewpager_item_margin)
 
@@ -98,4 +99,15 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setListAdapter() {
+        val titleAdapter = CategorySectionTitleAdapter()
+        val promotionAdapter = CategoryPromotionAdapter()
+        binding.rvHomeRecommendations.adapter = ConcatAdapter(
+            titleAdapter, promotionAdapter
+        )
+        viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
+            titleAdapter.submitList(listOf(promotions.title))
+            promotionAdapter.submitList(promotions.items)
+        }
+    }
 }
