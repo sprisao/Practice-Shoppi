@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -108,6 +109,16 @@ class HomeFragment : Fragment() {
         viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
             titleAdapter.submitList(listOf(promotions.title))
             promotionAdapter.submitList(promotions.items)
+            promotionAdapter.setOnItemClickListener(object :CategoryPromotionAdapter.OnItemClickListener{
+                override fun onItemClick(v: View, productId: String) {
+                    /*Make short toast*/
+                    findNavController().navigate(
+                        R.id.action_home_to_product_detail, bundleOf(
+                            KEY_PRODUCT_ID to productId
+                        )
+                    )
+                }
+            })
         }
     }
 }

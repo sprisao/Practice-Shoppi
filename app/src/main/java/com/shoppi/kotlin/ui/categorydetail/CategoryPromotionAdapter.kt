@@ -1,10 +1,14 @@
 package com.shoppi.kotlin.ui.categorydetail
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.shoppi.kotlin.R
 import com.shoppi.kotlin.databinding.ItemCategoryPromotionBinding
 import com.shoppi.kotlin.model.Product
 
@@ -13,12 +17,25 @@ class CategoryPromotionAdapter :
         ProductDiffCallback()
     ) {
 
+    interface OnItemClickListener {
+        fun onItemClick(v: View, productId: String)
+    }
 
-    class CategoryPromotionViewHolder(private val binding: ItemCategoryPromotionBinding) :
+    private var listener: OnItemClickListener? = null
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
+    inner class CategoryPromotionViewHolder(private val binding: ItemCategoryPromotionBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(product: Product?) {
             binding.product = product
             binding.executePendingBindings()
+
+            itemView.setOnClickListener {
+                listener?.onItemClick(it, "desk-1")
+            }
         }
 
     }
@@ -36,6 +53,7 @@ class CategoryPromotionAdapter :
         holder: CategoryPromotionViewHolder, position: Int
     ) {
         holder.bind(getItem(position))
+
     }
 }
 
@@ -49,5 +67,4 @@ class ProductDiffCallback : DiffUtil.ItemCallback<Product>() {
     ): Boolean {
         return oldItem == newItem
     }
-
 }

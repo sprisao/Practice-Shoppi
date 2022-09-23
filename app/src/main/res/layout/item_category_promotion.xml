@@ -15,6 +15,7 @@
 	</data>
 	
 	<androidx.cardview.widget.CardView
+			android:id="@+id/card_promotion_item"
 			android:layout_width="match_parent"
 			android:layout_marginStart="16dp"
 			android:layout_marginEnd="16dp"
