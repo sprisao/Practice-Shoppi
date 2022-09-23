@@ -1,9 +1,11 @@
 package com.shoppi.kotlin.ui.common
 
+import android.app.Service
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.shoppi.kotlin.AssetLoader
+import com.shoppi.kotlin.ServiceLocator
 import com.shoppi.kotlin.network.ApiClient
 import com.shoppi.kotlin.repository.category.CategoryRemoteDataSource
 import com.shoppi.kotlin.repository.category.CategoryRepository
@@ -28,16 +30,16 @@ class ViewModelFactory(private val context: Context) :
             HomeViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(CategoryViewModel::class.java)) {
             val repository =
-                CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
+                CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))
             CategoryViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(CategoryDetailViewModel::class.java)) {
             val repository = CategoryDetailRepository(
-                CategoryDetailRemoteDataSource(ApiClient.create())
+                CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient())
             )
             CategoryDetailViewModel(repository) as T
         } else if (modelClass.isAssignableFrom(ProductDetailViewModel::class.java)) {
             val repository = ProductDetailRepository(
-                ProductDetailRemoteDataSource(ApiClient.create())
+                ProductDetailRemoteDataSource(ServiceLocator.provideApiClient())
             )
             ProductDetailViewModel(repository) as T
         } else {
