@@ -9,9 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import com.shoppi.kotlin.common.KEY_CATEGORY_LABEL
 import com.shoppi.kotlin.databinding.FragmentCategoryDetailBinding
+import com.shoppi.kotlin.ui.common.ProductClickListener
 import com.shoppi.kotlin.ui.common.ViewModelFactory
 
-class CategoryDetailFragment : Fragment() {
+class CategoryDetailFragment : Fragment(),ProductClickListener{
     private lateinit var binding: FragmentCategoryDetailBinding
     private val viewModel: CategoryDetailViewModel by viewModels {
         ViewModelFactory(
@@ -45,7 +46,7 @@ class CategoryDetailFragment : Fragment() {
     private fun setListAdapter() {
         val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
         val titleAdapter = CategorySectionTitleAdapter()
-        val promotionAdapter = CategoryPromotionAdapter()
+        val promotionAdapter = CategoryPromotionAdapter(this)
         binding.rvCategoryDetail.adapter = ConcatAdapter(
             topSellingSectionAdapter, titleAdapter, promotionAdapter
         )
@@ -56,6 +57,10 @@ class CategoryDetailFragment : Fragment() {
             titleAdapter.submitList(listOf(promotions.title))
             promotionAdapter.submitList(promotions.items)
         }
+    }
+
+    override fun onProductClick(productId: String) {
+        //ToDo 화면 이동 구현
     }
 
 }

@@ -17,9 +17,10 @@ import com.shoppi.kotlin.databinding.FragmentHomeBinding
 import com.shoppi.kotlin.ui.categorydetail.CategoryPromotionAdapter
 import com.shoppi.kotlin.ui.categorydetail.CategorySectionTitleAdapter
 import com.shoppi.kotlin.ui.common.EventObserver
+import com.shoppi.kotlin.ui.common.ProductClickListener
 import com.shoppi.kotlin.ui.common.ViewModelFactory
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickListener {
 
     private val viewModel: HomeViewModel by viewModels {
         ViewModelFactory(
@@ -29,9 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -43,26 +42,28 @@ class HomeFragment : Fragment() {
         /*이 작업은 필수*/
         binding.lifecycleOwner = viewLifecycleOwner
 
-        /*binding을 통해 데이터 불러오기 적용*/
         setToolbar()
-
-        /* 'viewpager'가 반복되므로 'with'함수를 통해 반복을 없앤다*/
         setTopBanners()
-        setListAdapter()
-
         setNavigation()
+        setListAdapter()
+    }
 
+    override fun onProductClick(productId: String) {
+        findNavController().navigate(
+            R.id.action_home_to_product_detail, bundleOf(
+                KEY_PRODUCT_ID to "desk-1"
+            )
+        )
     }
 
     private fun setNavigation() {
-        viewModel.openProductDetailEvent.observe(viewLifecycleOwner,
-            EventObserver { productId ->
-                findNavController().navigate(
-                    R.id.action_home_to_product_detail, bundleOf(
-                        KEY_PRODUCT_ID to productId
-                    )
+        viewModel.openProductDetailEvent.observe(viewLifecycleOwner, EventObserver { productId ->
+            findNavController().navigate(
+                R.id.action_home_to_product_detail, bundleOf(
+                    KEY_PRODUCT_ID to productId
                 )
-            })
+            )
+        })
     }
 
 
@@ -83,8 +84,7 @@ class HomeFragment : Fragment() {
             }
 
             val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
-            val pageMargin =
-                resources.getDimension(R.dimen.viewpager_item_margin)
+            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
 
             val screenWidth = resources.displayMetrics.widthPixels
             val offset = screenWidth - pageWidth - pageMargin
@@ -102,23 +102,18 @@ class HomeFragment : Fragment() {
 
     private fun setListAdapter() {
         val titleAdapter = CategorySectionTitleAdapter()
-        val promotionAdapter = CategoryPromotionAdapter()
+        val promotionAdapter = CategoryPromotionAdapter(this)
         binding.rvHomeRecommendations.adapter = ConcatAdapter(
             titleAdapter, promotionAdapter
         )
         viewModel.promotions.observe(viewLifecycleOwner) { promotions ->
             titleAdapter.submitList(listOf(promotions.title))
             promotionAdapter.submitList(promotions.items)
-            promotionAdapter.setOnItemClickListener(object :CategoryPromotionAdapter.OnItemClickListener{
+            promotionAdapter.setOnItemClickListener(object : CategoryPromotionAdapter.OnItemClickListener {
                 override fun onItemClick(v: View, productId: String) {
-                    /*Make short toast*/
-                    findNavController().navigate(
-                        R.id.action_home_to_product_detail, bundleOf(
-                            KEY_PRODUCT_ID to productId
-                        )
-                    )
                 }
             })
         }
     }
+
 }

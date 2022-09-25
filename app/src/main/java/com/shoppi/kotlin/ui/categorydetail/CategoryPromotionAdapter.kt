@@ -3,19 +3,17 @@ package com.shoppi.kotlin.ui.categorydetail
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.shoppi.kotlin.R
 import com.shoppi.kotlin.databinding.ItemCategoryPromotionBinding
 import com.shoppi.kotlin.model.Product
+import com.shoppi.kotlin.ui.common.ProductClickListener
 
-class CategoryPromotionAdapter :
-    ListAdapter<Product, CategoryPromotionAdapter.CategoryPromotionViewHolder>(
-        ProductDiffCallback()
-    ) {
+class CategoryPromotionAdapter(private val clickListener: ProductClickListener) :
+        ListAdapter<Product, CategoryPromotionAdapter.CategoryPromotionViewHolder>(
+            ProductDiffCallback()
+        ) {
 
     interface OnItemClickListener {
         fun onItemClick(v: View, productId: String)
@@ -27,15 +25,12 @@ class CategoryPromotionAdapter :
     }
 
     inner class CategoryPromotionViewHolder(private val binding: ItemCategoryPromotionBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+            RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Product?) {
+            binding.clickListener = clickListener
             binding.product = product
             binding.executePendingBindings()
-
-            itemView.setOnClickListener {
-                listener?.onItemClick(it, "desk-1")
-            }
         }
 
     }
