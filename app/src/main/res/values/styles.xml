@@ -108,6 +108,10 @@
 	       parent="TextAppearance.AppCompat.Caption">
 		<item name="android:textColor">@color/shoppi_black_01</item>
 	</style>
+	<style name="TextCaption1.Grey01">
+		<item name="android:textColor">@color/shoppi_grey_01</item>
+	</style>
+	
 	
 	<style name="TextCaption1.White">
 		<item name="android:textColor">@color/shoppi_white</item>
