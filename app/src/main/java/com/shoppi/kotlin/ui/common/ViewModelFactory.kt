@@ -15,6 +15,7 @@ import com.shoppi.kotlin.repository.home.HomeAssetDataSource
 import com.shoppi.kotlin.repository.home.HomeRepository
 import com.shoppi.kotlin.repository.productdetail.ProductDetailRemoteDataSource
 import com.shoppi.kotlin.repository.productdetail.ProductDetailRepository
+import com.shoppi.kotlin.ui.cart.CartViewModel
 import com.shoppi.kotlin.ui.category.CategoryViewModel
 import com.shoppi.kotlin.ui.categorydetail.CategoryDetailViewModel
 import com.shoppi.kotlin.ui.home.HomeViewModel
@@ -46,8 +47,13 @@ class ViewModelFactory(private val context: Context) :
                 ProductDetailRemoteDataSource(ServiceLocator.provideApiClient())
             )
             ProductDetailViewModel(repository) as T
+        } else if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
+            val repository = ProductDetailRepository(
+                ProductDetailRemoteDataSource(ServiceLocator.provideApiClient())
+            )
+            CartViewModel() as T
         } else {
-            throw IllegalArgumentException("Failed to create ViewModel: ${modelClass.name}")
+            throw IllegalArgumentException("ViewModel Not Found")
         }
     }
 }

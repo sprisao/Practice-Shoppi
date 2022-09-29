@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		>
+	
+	<data>
+		
+		<variable
+				name="item"
+				type="com.shoppi.kotlin.model.CartItem"
+				/>
+	
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			>
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				android:padding="16dp"
+				android:layout_marginHorizontal="8dp"
+				android:layout_marginVertical="16dp"
+				android:background="@drawable/background_cart_sub_section"
+				>
+			
+			<CheckBox
+					android:id="@+id/checkbox_cart_section"
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:button="@null"
+					tools:checked="true"
+					android:background="@drawable/selector_checkbox"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					/>
+			
+			<com.google.android.material.imageview.ShapeableImageView
+					android:id="@+id/iv_cart_item_thumbnail"
+					android:layout_width="48dp"
+					android:layout_height="48dp"
+					tools:src="@drawable/img_pdp_top_01"
+					imageUrl="@{item.thumbnailImageUrl}"
+					app:shapeAppearanceOverlay="@style/Circle"
+					android:layout_marginStart="8dp"
+					app:layout_constraintStart_toEndOf="@+id/checkbox_cart_section"
+					app:layout_constraintTop_toTopOf="@+id/checkbox_cart_section"
+					/>
+			
+			<TextView
+					android:id="@+id/tv_cart_item_label"
+					android:layout_width="0dp"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="12dp"
+					android:layout_marginEnd="12dp"
+					android:text="@{item.label}"
+					tools:text="캐시미어 100% 터틀넥 스웨터"
+					style="@style/TextCaption1"
+					app:layout_constraintStart_toEndOf="@+id/iv_cart_item_thumbnail"
+					app:layout_constraintEnd_toStartOf="@id/iv_cart_item_delete"
+					app:layout_constraintTop_toTopOf="@+id/checkbox_cart_section"
+					/>
+			
+			<ImageButton
+					android:id="@+id/iv_cart_item_delete"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:layout_constraintTop_toTopOf="@id/checkbox_cart_section"
+					app:layout_constraintEnd_toEndOf="parent"
+					android:background="@drawable/ic_delete"
+					/>
+			
+			<TextView
+					android:id="@+id/tv_cart_item_option"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@{item.type}"
+					tools:text="Free"
+					app:layout_constraintStart_toStartOf="@id/tv_cart_item_label"
+					app:layout_constraintTop_toBottomOf="@id/tv_cart_item_label"
+					android:layout_marginTop="2dp"
+					style="@style/TextCaption1.Grey01"
+					/>
+			
+			<ImageButton
+					android:id="@+id/iv_cart_item_minus"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/ic_minus"
+					android:layout_marginTop="12dp"
+					app:layout_constraintStart_toStartOf="@id/tv_cart_item_label"
+					app:layout_constraintTop_toBottomOf="@id/tv_cart_item_option"
+					/>
+			
+			<TextView
+					android:id="@+id/tv_cart_item_count"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					tools:text="1"
+					android:text="@{item.amount}"
+					app:layout_constraintStart_toEndOf="@+id/iv_cart_item_minus"
+					app:layout_constraintTop_toTopOf="@+id/iv_cart_item_minus"
+					app:layout_constraintBottom_toBottomOf="@id/iv_cart_item_minus"
+					android:layout_marginStart="10dp"
+					style="@style/TextSubtitle2.Black02.Bold"
+					/>
+			
+			<ImageButton
+					android:id="@+id/iv_cart_item_plus"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/ic_plus"
+					app:layout_constraintStart_toEndOf="@+id/tv_cart_item_count"
+					app:layout_constraintTop_toTopOf="@+id/iv_cart_item_minus"
+					app:layout_constraintBottom_toBottomOf="@id/iv_cart_item_minus"
+					android:layout_marginStart="10dp"
+					/>
+			
+			<TextView
+					android:id="@+id/tv_cart_item_price"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					tools:text="91,800원"
+					priceAmount="@{item.price}"
+					style="@style/TextSubtitle1.bold"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintTop_toTopOf="@+id/iv_cart_item_minus"
+					app:layout_constraintBottom_toBottomOf="@id/iv_cart_item_minus"
+					/>
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
