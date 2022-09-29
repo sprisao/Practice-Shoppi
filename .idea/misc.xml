@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.39148681055155876" />
         <entry key="app/src/main/res/drawable/background_bluegray_r20.xml" value="0.13" />
+        <entry key="app/src/main/res/drawable/background_cart_sub_section.xml" value="0.4525" />
         <entry key="app/src/main/res/drawable/background_circle_gradient.xml" value="0.5415" />
         <entry key="app/src/main/res/drawable/background_purple_r24.xml" value="0.3105" />
         <entry key="app/src/main/res/drawable/background_shadow_gradient.xml" value="0.316" />
@@ -12,10 +13,12 @@
         <entry key="app/src/main/res/drawable/background_white.xml" value="0.5415" />
         <entry key="app/src/main/res/drawable/button_product_detail_nav.xml" value="0.269" />
         <entry key="app/src/main/res/drawable/ic_gnb_back.xml" value="0.252" />
+        <entry key="app/src/main/res/drawable/ic_tabbar_cart_on.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/product_detail_nav.xml" value="0.269" />
         <entry key="app/src/main/res/drawable/selected_viewpager_indicator.xml" value="0.5415" />
         <entry key="app/src/main/res/drawable/selector_cart_icon.xml" value="0.252" />
         <entry key="app/src/main/res/drawable/selector_category_icon.xml" value="0.252" />
+        <entry key="app/src/main/res/drawable/selector_checkbox.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/selector_home_icon.xml" value="0.252" />
         <entry key="app/src/main/res/drawable/selector_viewpager_indicator.xml" value="0.5415" />
         <entry key="app/src/main/res/drawable/text_strike_through.xml" value="0.25" />
@@ -27,6 +30,9 @@
         <entry key="app/src/main/res/layout/fragment_category_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.26337033299697277" />
         <entry key="app/src/main/res/layout/fragment_product_detail.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/layout/item_cart_product.xml" value="0.1585144927536232" />
+        <entry key="app/src/main/res/layout/item_cart_section.xml" value="0.4955357142857143" />
+        <entry key="app/src/main/res/layout/item_cart_sub_section.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_category.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_category_promotion.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_category_top_selling.xml" value="0.8301587301587302" />
