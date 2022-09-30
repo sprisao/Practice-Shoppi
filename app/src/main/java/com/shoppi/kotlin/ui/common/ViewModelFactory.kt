@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.shoppi.kotlin.AssetLoader
 import com.shoppi.kotlin.ServiceLocator
 import com.shoppi.kotlin.network.ApiClient
+import com.shoppi.kotlin.repository.cart.CartItemLocalDataSource
+import com.shoppi.kotlin.repository.cart.CartRepository
 import com.shoppi.kotlin.repository.category.CategoryRemoteDataSource
 import com.shoppi.kotlin.repository.category.CategoryRepository
 import com.shoppi.kotlin.repository.categorydetail.CategoryDetailRemoteDataSource
@@ -46,12 +48,11 @@ class ViewModelFactory(private val context: Context) :
             val repository = ProductDetailRepository(
                 ProductDetailRemoteDataSource(ServiceLocator.provideApiClient())
             )
-            ProductDetailViewModel(repository) as T
+            ProductDetailViewModel(
+                repository, ServiceLocator.provideCartRepository(context)
+            ) as T
         } else if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
-            val repository = ProductDetailRepository(
-                ProductDetailRemoteDataSource(ServiceLocator.provideApiClient())
-            )
-            CartViewModel() as T
+            CartViewModel(ServiceLocator.provideCartRepository(context)) as T
         } else {
             throw IllegalArgumentException("ViewModel Not Found")
         }

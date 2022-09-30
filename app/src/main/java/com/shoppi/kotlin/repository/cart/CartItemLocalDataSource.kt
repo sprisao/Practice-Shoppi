@@ -1,7 +1,7 @@
 package com.shoppi.kotlin.repository.cart
 
-import com.shoppi.kotlin.database.CartItemDao
 import com.shoppi.kotlin.model.CartItem
+import com.shoppi.kotlin.database.CartItemDao
 
 class CartItemLocalDataSource(private val dao: CartItemDao) :
 
